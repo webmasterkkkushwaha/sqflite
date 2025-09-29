@@ -106,9 +106,9 @@ public class Utils {
 
     static Locale localOf(String language, String country, String variant) {
         // SDK 36 is the minimum supported version
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // For Android versions before 36, we can use the standard Locale constructor
-            return Locale.of(language, country, variant);
+            return new Locale(language, country, variant);
         } else {
             // For Android versions before 36, we can use the standard Locale constructor
             @SuppressWarnings("deprecation")
@@ -121,9 +121,9 @@ public class Utils {
         // SDK 36 is the minimum supported version
         // Build.VERSION_CODES.BAKLAVA is Android 36
         // for when Thread.threadId() is definitely available and getId() is deprecated.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) { // Android 13 (API 33) and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13 (API 33) and above
             // Use the new, recommended method
-            return thread.threadId();
+            return thread.getId();
         } else {
             // For older Android versions where threadId() might not be available
             // and getId() is still the primary way to get a thread ID.
